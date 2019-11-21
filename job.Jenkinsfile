@@ -28,7 +28,7 @@ pipeline {
             steps {
                 sshagent (credentials: ["${env.JENKINS_CREDENTIAL_ID_SSH}",]) {
                     ansiColor('xterm') {
-                        sh "deploy_scripts/jenkins_job_builder ${params}"
+                        sh "deploy_scripts/jenkins_job_builder ${params.jjb_command} ${params.job_definition}"
                     }
                 }
             }
